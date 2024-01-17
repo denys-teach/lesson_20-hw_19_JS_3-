@@ -111,7 +111,7 @@ function weekFn(n){
     case 3:
       return 'Среда'
     case 4:
-      return 'Четвер'
+      return 'Четверг'
     case 5:
       return 'Пятница'
     case 6:
@@ -126,17 +126,18 @@ function weekFn(n){
 
 
 
-console.log(weekFn(1)); // 'Понедельник'
-
-console.log(weekFn(3)); // 'Среда'
-
-console.log(weekFn(7)); // 'Воскресенье'
-
-console.log(weekFn(9)); // null
-
-console.log(weekFn(1.5)); // null
-
-console.log(weekFn('2')); // null
+// 
+// console.log(weekFn(1)); // 'Понедельник'
+// 
+// console.log(weekFn(3)); // 'Среда'
+// 
+// console.log(weekFn(7)); // 'Воскресенье'
+// 
+// console.log(weekFn(9)); // null
+// 
+// console.log(weekFn(1.5)); // null
+// 
+// console.log(weekFn('2')); // null
 
 /*
  * #6
@@ -247,32 +248,28 @@ function oddFn(n){
  *
  */
 
+function mainFunc(a,b, func){
+
+}
+
 /*
  * реализуйте следующие функции, которые будут осуществлять механизм callback в основной функции,
  * возвращая ей результат собственного вычисления...
  * для возведения в степень и получения произвольного значения можете воспользоваться методами объекта Math.
  */
 
-// function mainFunc(a,b,func){
-//   a = this.a
-//   b = this.b 
-//   
-//   // func == cbRandom ? function cbRandom(a, b) {
-//   //   return (Math.roundMath.random()*b-a)()
-//   // }:
-//   // null
-//   // func()
-//   return result = typeof(func) === 'function' ? 
-//   
-//   : false
-// }
-
 // cbRandom(a, b) – вычисляет и возвращает произвольное целое число в диапазоне между a и b включительно.
-
+function cbRandom(a,b){
+  return Math.round(Math.random()*(b-a))+a
+}
 // cbPow(a, b) – вычисляет и возвращает результат возведения числа a в степень b.
-
+function cbPow(a,b){
+  return a**b
+}
 // cbAdd(a, b) – вычисляет и возвращает сумму двух чисел a и b.
-
+function cbAdd(a,b){
+  return a+b
+}
 /*
  * mainFunc() должна возвращать результат работы переданной ей возвратной функции, например:
  * mainFunc(2, 5, cbRandom) → случайно от 2 до 5 включительно
@@ -282,10 +279,14 @@ function oddFn(n){
  * mainFunc(2, 5, 'not a func') → false
  */
 
-// console.log(mainFunc(2, 5, cbRandom)); // целые числа в диапазоне 2..5
+function mainFunc(a,b,func){
+  return typeof(func)==='function'?func(a,b):false
+}
 
-// console.log(mainFunc(2, 5, cbPow)); // 32
+console.log(mainFunc(2, 5, cbRandom)); // целые числа в диапазоне 2..5
 
-// console.log(mainFunc(2, 5, cbAdd)); // 7
+console.log(mainFunc(2, 5, cbPow)); // 32
 
-// console.log(mainFunc(2, 5, 'not a func')); // false
+console.log(mainFunc(2, 5, cbAdd)); // 7
+
+console.log(mainFunc(2, 5, 'not a func')); // false
